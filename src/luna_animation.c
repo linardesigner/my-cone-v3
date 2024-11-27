@@ -1,4 +1,23 @@
 #include <zmk/display.h>
+// SSD1306 OLED update loop
+#include "oled_driver.h"
+#include "timer.h"
+#ifdef CONSOLE_ENABLE
+#    include "print.h"
+#endif
+#ifdef OLED_ENABLE
+uint32_t oled_timer = 0; // For Keyboard pet OLED timeout with animations, code by Drashna.
+#    ifndef PET_DISABLE
+/* KEYBOARD PET START */
+#        define KEYBOARD_PET
+
+/* settings */
+#        define MIN_WALK_SPEED 10
+#        define MIN_RUN_SPEED 40
+
+/* advanced settings */
+#        define ANIM_FRAME_DURATION 200 // how long each frame lasts in ms
+#        define ANIM_SIZE 96            // number of bytes in array. If you change sprites, minimize for adequate firmware size. max is 1024
 
 
 uint16_t anim_timer = 0;
@@ -78,7 +97,6 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
         0x02, 0x02, 0x04, 0x08, 0x10, 0x26, 0x2b, 0x32, 0x04, 0x05, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00,
       },
 
-Linar Khakim, [28.11.2024 0:40]
 /* 'run2', 32x22px */
       {
         0x00, 0x00, 0x00, 0xe0, 0x10, 0x10, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80,
@@ -139,7 +157,6 @@ Linar Khakim, [28.11.2024 0:40]
     #endif
     // clang-format on
 
-Linar Khakim, [28.11.2024 0:40]
 /* animation */
     void animate_luna(void) {
         /* jump */
@@ -294,7 +311,6 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 bool oled_task_user(void) {
 #    ifndef
 
-Linar Khakim, [28.11.2024 0:40]
 PET_DISABLE
     /* KEYBOARD PET VARIABLES START */
     current_wpm_read = get_current_wpm();
