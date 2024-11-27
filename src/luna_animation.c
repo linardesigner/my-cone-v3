@@ -1,54 +1,6 @@
-Linar Khakim, [28.11.2024 0:36]
-#include <stdint.h>
+#include <zmk/display.h>
 
-// Кадры для состояния "покой" (IDLE)
-static const uint8_t FRAME_IDLE[] = {
-    // Данные массива для состояния покоя (вы можете взять их из оригинального luna.c)
-};
 
-// Кадры для состояния "ходьба" (WALK)
-static const uint8_t FRAME_WALK_1[] = {
-    // Данные массива для первого шага ходьбы
-};
-
-static const uint8_t FRAME_WALK_2[] = {
-    // Данные массива для второго шага ходьбы
-};
-
-// Кадры для состояния "бег" (RUN)
-static const uint8_t FRAME_RUN_1[] = {
-    // Данные массива для первого кадра бега
-};
-
-static const uint8_t FRAME_RUN_2[] = {
-    // Данные массива для второго кадра бега
-};
-
-// Кадры для состояния "Caps Lock включён" (CAPS_LOCK)
-static const uint8_t FRAME_CAPS_LOCK[] = {
-    // Данные массива для отображения Caps Lock
-};
-
-// Общий массив кадров для анимации
-static const uint8_t *ANIMATION_FRAMES[] = {
-    FRAME_IDLE,
-    FRAME_WALK_1,
-    FRAME_WALK_2,
-    FRAME_RUN_1,
-    FRAME_RUN_2,
-    FRAME_CAPS_LOCK
-};
-
-#define TOTAL_FRAMES (sizeof(ANIMATION_FRAMES) / sizeof(ANIMATION_FRAMES[0]))
-
-// Функция для рендеринга текущего кадра
-void render_frame(const uint8_t *frame, size_t frame_size, const struct device *display_dev) {
-    if (device_is_ready(display_dev)) {
-        display_write(display_dev, 0, 0, frame, frame_size);
-    }
-}
-
-Linar Khakim, [28.11.2024 0:40]
 uint16_t anim_timer = 0;
 uint16_t anim_sleep = 0;
 
