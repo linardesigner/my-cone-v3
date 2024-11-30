@@ -9,6 +9,17 @@
 #include <dt-bindings/zmk/bt.h>
 
 
+/ {
+    oled_display {
+        compatible = "ssd1306";
+        label = "OLED_DISPLAY";
+        i2c = <&i2c1>;
+        width = <128>;
+        height = <64>;
+        animation = &luna_animation;
+    };
+};
+
 
 / {
         keymap {
