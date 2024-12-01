@@ -21,7 +21,5 @@
 include:
   - board: nice_nano_v2
     shield: corne_left
-    config: my-cone-v3/config/
   - board: nice_nano_v2
     shield: corne_right
-    config: my-cone-v3/config/
