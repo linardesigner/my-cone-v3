@@ -2,4 +2,8 @@
     label = "Custom OLED Animation";
     compatible = "oled_animation_driver";
     animation = &luna_animation;
+    compatible = "ssd1306";
+    i2c = <&i2c1>;
+    width = <128>;
+    height = <32>;
 };
