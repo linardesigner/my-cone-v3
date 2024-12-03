@@ -9,7 +9,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 
-/ {
+/ *
+{
     oled_display {
         compatible = "ssd1306";
         label = "OLED_DISPLAY";
@@ -19,7 +20,7 @@
         animation = &luna_animation;
     };
 };
-
+/ *
 
 / {
         keymap {
