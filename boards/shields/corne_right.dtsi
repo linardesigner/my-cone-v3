@@ -1,0 +1,10 @@
+/ {
+    chosen {
+        zmk,keyboard-node = &right_hand;
+    };
+
+    right_hand: right_hand {
+        compatible = "zmk,split";
+        matrix = <&row0 &row1 &row2 &row3 &row4>;
+    };
+};
